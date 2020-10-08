@@ -3,6 +3,7 @@ package io.github.recruitmentTask.recruitmentTask.notes;
 import io.github.recruitmentTask.recruitmentTask.common.ExceptionResponse;
 import io.github.recruitmentTask.recruitmentTask.common.GeneralExceptionsProcessing;
 import io.github.recruitmentTask.recruitmentTask.notes.projection.NoteHistoryReadModel;
+import javassist.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

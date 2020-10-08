@@ -84,7 +84,6 @@ public class NoteService {
 
     void deleteNote(final String noteId) {
         List<Note> result = repository.findAllByNoteId(noteId);
-        result.forEach((each) -> System.out.println(each.getTitle()));
         result
             .stream()
             .forEach(eachVersion -> {
