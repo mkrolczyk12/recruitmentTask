@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+tempTask-db.mv.db
+tempTask-db.trace.db
