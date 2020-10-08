@@ -6,9 +6,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @Entity
-@JsonIgnoreProperties({"noteId", "version", "actualVersion", "deleted"})
+@JsonIgnoreProperties({"id", "version", "actualVersion", "deleted", "created", "modified"})
 @Table(name = "notes")
 public class Note {
     @Id
@@ -19,9 +20,8 @@ public class Note {
     @NotBlank(message = "Note content can not be null or empty")
     private String content;
 
-    // String uniqueID = UUID.randomUUID().toString();
     private String noteId;
-    private Integer version = 1;
+    private Integer version;
     private Boolean actualVersion;
     private Boolean deleted = false;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
@@ -38,6 +38,16 @@ public class Note {
     public Note(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    public Note(Note prevNote) {
+        this.title = prevNote.getTitle();
+        this.content = prevNote.getContent();
+        this.noteId = prevNote.noteId;
+        this.version = prevNote.getVersion() + 1;
+        this.actualVersion = prevNote.actualVersion;
+        this.deleted = prevNote.deleted;
+        this.created = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
     }
 
     public Long getId() {return id;}
@@ -66,11 +76,5 @@ public class Note {
 
     public LocalDateTime getModified() {return modified;}
     public void setModified(final LocalDateTime modified) {this.modified = modified;}
-
-    public void fullUpdate(Note toUpdate) {
-        this.title = toUpdate.title;
-        this.content = toUpdate.content;
-    }
-
 }
 
