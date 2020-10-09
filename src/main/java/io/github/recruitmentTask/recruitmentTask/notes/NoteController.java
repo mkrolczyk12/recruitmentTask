@@ -54,11 +54,12 @@ public class NoteController {
                 return new ResponseEntity(resp, HttpStatus.BAD_REQUEST);
             }
             NoteReadModel resp = service.findById(noteId);
+            logger.info("exposing note with id = " +noteId);
             return ResponseEntity.ok(resp);
     }
     @Transactional
     @PutMapping(path = "/{noteId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<Object> fullNoteUpdate(@PathVariable final String noteId,
+    public ResponseEntity<Object> fullNoteUpdate(@PathVariable final String noteId,
                                         @RequestBody @Valid final NoteWriteModel note) throws NotFoundException {
         if(!service.checkIfGivenNoteExist(noteId)) {
             final String message = "Note with given id does not exist!";
@@ -66,24 +67,25 @@ public class NoteController {
             return new ResponseEntity(resp, HttpStatus.BAD_REQUEST);
         }
         service.fullUpdate(note, noteId);
+        logger.info("updated note with id = " + noteId);
         return ResponseEntity.ok().build();
     }
     @Transactional
     @PatchMapping(path = "/{noteId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<Object> partNoteUpdate(@PathVariable final String noteId,
+    public ResponseEntity<Object> partNoteUpdate(@PathVariable final String noteId,
                                         @Valid final HttpServletRequest request) throws IOException, NotFoundException {
         if(!service.checkIfGivenNoteExist(noteId)) {
             final String message = "Note with given id does not exist!";
             ExceptionResponse resp = new ExceptionResponse(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), message, "-");
             return new ResponseEntity(resp, HttpStatus.BAD_REQUEST);
         }
-
         service.partUpdate(request, noteId);
+        logger.info("updated note with id = " + noteId);
         return ResponseEntity.ok().build();
     }
     @Transactional
     @DeleteMapping(path = "/{noteId}")
-    ResponseEntity<Object> deleteNote(@PathVariable final String noteId) {
+    public ResponseEntity<Object> deleteNote(@PathVariable final String noteId) {
         if(!service.checkIfGivenNoteExist(noteId)) {
             final String message = "Note with given id does not exist!";
             ExceptionResponse resp = new ExceptionResponse(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), message, "-");
