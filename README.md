@@ -60,7 +60,11 @@ b) To load in Postman: load file named 'RecruitmentTaskLocalHost.postman_collect
 
 ## Database instruction
 Application uses in-memory database in local profile.
-There is no need to do anything, just follow the build instruction and the database should work.
+There is no need to do anything, just follow the build instruction and the database should work. <br />
+If the app was built locally, there should be available a link to database admin panel: localhost:8080/h2-console <br />
+The panel allows to view the current database data. To log in type: <br />
+user name: admin <br />
+password: admin
 
 ## Status
 
