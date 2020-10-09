@@ -13,4 +13,5 @@ public interface NoteRepository {
     List<Note> findAllByActualVersionAndDeleted(Boolean actualVersion, Boolean deleted);
     List<Note> findAllByNoteId(final String noteId);
     List<Note> findAllByNoteIdOrderByVersionAsc(final String noteId);
+    List<Note> findAllByNoteIdAndDeleted(final String noteId, Boolean deleted);
 }

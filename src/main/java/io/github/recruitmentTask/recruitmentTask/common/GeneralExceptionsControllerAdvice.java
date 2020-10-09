@@ -25,7 +25,6 @@ public class GeneralExceptionsControllerAdvice {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public final ResponseEntity<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception, WebRequest request) {
         final String message = "One of the required values is missing";
-        exception.printStackTrace();
         logger.warn("captured MethodArgumentNotValidException: " + message);
         ExceptionResponse resp = new ExceptionResponse(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), message, "-");
         return new ResponseEntity<>(resp, HttpStatus.BAD_REQUEST);
