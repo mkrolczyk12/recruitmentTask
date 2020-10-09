@@ -27,7 +27,7 @@ There are two ways of interaction with project: <br />
 ### Use of a ready-made solution prepared by me <br />
 To use project, follow these steps: <br />
 1. Open page: https://recruitmenttask.herokuapp.com/notes <br />
-- If the application has not been used for some time, you need to wait for the application to build (usually it takes about 20 seconds) <br />
+- If the application has not been used for some time, there is a need to wait for the application to build (usually it takes about 20 seconds) <br />
 2. Use the application by using ready endpoints available at the link: https://www.getpostman.com/collections/ac816262f12afdfbc33f <br />
 3. (Optional) - If you want make your own http request:
 - Download Postman from official page: https://www.postman.com/downloads/ <br />
