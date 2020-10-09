@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "4bf5b1db-b1e7-4667-a8a9-f61cbd5d5034",
+		"name": "RecruitmentTaskLocalHost",
+		"description": "Recruitment task for the position of backend developer intern at Polsource",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "noteController",
+			"item": [
+				{
+					"name": "GET all notes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/notes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET single note",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/notes/03fa73f4-cdb5-479a-9a47-d146179b04bc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notes",
+								"03fa73f4-cdb5-479a-9a47-d146179b04bc"
+							]
+						},
+						"description": "GET pod adres http://localhost:8080/notes/{noteId}\ngdzie noteId = id notatki"
+					},
+					"response": []
+				},
+				{
+					"name": "POST single note",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Notatka z metody POST\",\n    \"content\": \"To jest notatka dodana z metody POST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/notes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notes"
+							]
+						},
+						"description": "dodawanie notatki"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT chosen note",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"edytowana notatka z metody PUT\",\n    \"content\": \"To jest notatka która została edytowana zapytaniem typu PUT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/notes/03fa73f4-cdb5-479a-9a47-d146179b04bc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notes",
+								"03fa73f4-cdb5-479a-9a47-d146179b04bc"
+							]
+						},
+						"description": "PUT pod adres http://localhost:8080/notes/{noteId}\ngdzie noteId = id notatki"
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH chosen note",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"to jest tytuł edytowanej notatki z metody PATCH nr 2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/notes/03fa73f4-cdb5-479a-9a47-d146179b04bc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notes",
+								"03fa73f4-cdb5-479a-9a47-d146179b04bc"
+							]
+						},
+						"description": "PATCH pod adres http://localhost:8080/notes/{noteId}\ngdzie noteId = id notatki"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE chosen note",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/notes/03fa73f4-cdb5-479a-9a47-d146179b04bc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notes",
+								"03fa73f4-cdb5-479a-9a47-d146179b04bc"
+							]
+						},
+						"description": "DELETE pod adres http://localhost:8080/notes/{noteId}\ngdzie noteId = id notatki"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "noteHistoryController",
+			"item": [
+				{
+					"name": "GET note history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/notes/history/03fa73f4-cdb5-479a-9a47-d146179b04bc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notes",
+								"history",
+								"03fa73f4-cdb5-479a-9a47-d146179b04bc"
+							]
+						},
+						"description": "GET pod adres http://localhost:8080/notes/history/{noteId}\ngdzie noteId = id notatki"
+					},
+					"response": []
+				}
+			],
+			"description": "Controller dla historii notatek",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
