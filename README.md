@@ -1,4 +1,4 @@
-# recruitmentTask
+# Recruitment task
 Backend Developer Assignment
 
 ## Table of contents
