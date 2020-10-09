@@ -59,7 +59,7 @@ a) Available online: https://www.getpostman.com/collections/4495f497622ce37df451
 b) To load in Postman: load file named 'RecruitmentTaskLocalHost.postman_collection.json' located in cloned project. <br />
 
 ## Database instruction
-Application uses in-memory database in local profile.
+Application uses in-memory database in local profile. <br />
 There is no need to do anything, just follow the build instruction and the database should work. <br />
 If the app was built locally, there should be available a link to database admin panel: localhost:8080/h2-console <br />
 The panel allows to view the current database data. To log in type: <br />
