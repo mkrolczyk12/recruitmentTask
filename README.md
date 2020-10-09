@@ -55,11 +55,11 @@ $ java -jar [name_of_the_jar_file]
 - Spring application uses port 8080 by default. <br />
 - Interact with application using link: http://localhost:8080/ <br />
 - You can also use Postman for making requests. I have also prepared a ready list of endpoints for localhost: <br />
-a) available online: https://www.getpostman.com/collections/4495f497622ce37df451 <br />
-b) to load in Postman: load file named 'RecruitmentTaskLocalHost.postman_collection.json' located in cloned project. <br />
+a) Available online: https://www.getpostman.com/collections/4495f497622ce37df451 <br />
+b) To load in Postman: load file named 'RecruitmentTaskLocalHost.postman_collection.json' located in cloned project. <br />
 
 ## Database instruction
-Application uses in-memory database.
+Application uses in-memory database in local profile.
 There is no need to do anything, just follow the build instruction and the database should work.
 
 ## Status
