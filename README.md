@@ -29,7 +29,7 @@ To use project, follow these steps: <br />
 1. Open page: https://recruitmenttask.herokuapp.com/notes <br />
 - If the application has not been used for some time, there is a need to wait for the application to build (usually it takes about 20 seconds) <br />
 2. Use the application by using ready endpoints available at the link: https://www.getpostman.com/collections/ac816262f12afdfbc33f <br />
-- Please download any extension that supports displaying JSON files in the browser, it is necessary because only then content from above link is readable (example extension name: 'JSONView')
+- Please download any extension that supports displaying JSON files in the browser, it is necessary because only then content from above link is readable (ex. extension: 'JSONView')
 3. (Optional) - If you want to make your own http request:
 - Download Postman from official page: https://www.postman.com/downloads/ <br />
 - Open Postman: <br />
@@ -64,7 +64,7 @@ Application uses in-memory database in local profile. <br />
 There is no need to do anything, just follow the build instruction and the database should work. <br />
 If the app was built locally, there should be available a link to database admin panel: localhost:8080/h2-console <br />
 The panel allows to view the current database data. To log in type: <br />
-user name: admin <br />
+username: admin <br />
 password: admin
 
 ## Status
