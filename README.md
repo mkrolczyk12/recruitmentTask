@@ -29,7 +29,8 @@ To use project, follow these steps: <br />
 1. Open page: https://recruitmenttask.herokuapp.com/notes <br />
 - If the application has not been used for some time, there is a need to wait for the application to build (usually it takes about 20 seconds) <br />
 2. Use the application by using ready endpoints available at the link: https://www.getpostman.com/collections/ac816262f12afdfbc33f <br />
-3. (Optional) - If you want make your own http request:
+- Please download any extension to display JSON files in your browser, it is necessary because only then above link will be readable.
+3. (Optional) - If you want to make your own http request:
 - Download Postman from official page: https://www.postman.com/downloads/ <br />
 - Open Postman: <br />
 a) Load ready endpoints by following this instruction: https://learning.postman.com/docs/getting-started/importing-and-exporting-data/ <br />
@@ -54,7 +55,7 @@ $ java -jar [name_of_the_jar_file]
 4. After loading application is ready to use. <br />
 - Spring application uses port 8080 by default. <br />
 - Interact with application using link: http://localhost:8080/ <br />
-- You can also use Postman for making requests. I have also prepared a ready list of endpoints for localhost: <br />
+- I recommend using Postman for making requests. I have also prepared a ready list of endpoints for localhost: <br />
 a) Available online: https://www.getpostman.com/collections/4495f497622ce37df451 <br />
 b) To load in Postman: load file named 'RecruitmentTaskLocalHost.postman_collection.json' located in cloned project. <br />
 
