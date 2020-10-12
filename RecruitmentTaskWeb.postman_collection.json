@@ -47,7 +47,7 @@
 								"03fa73f4-cdb5-479a-9a47-d146179b04bc"
 							]
 						},
-						"description": "GET pod adres http://localhost:8080/notes/{noteId}\ngdzie noteId = id notatki"
+						"description": "GET pod adres https://recruitmenttask.herokuapp.com/notes/{noteId}\ngdzie noteId = id notatki"
 					},
 					"response": []
 				},
@@ -108,7 +108,7 @@
 								"03fa73f4-cdb5-479a-9a47-d146179b04bc"
 							]
 						},
-						"description": "PUT pod adres http://localhost:8080/notes/{noteId}\ngdzie noteId = id notatki"
+						"description": "PUT pod adres https://recruitmenttask.herokuapp.com/notes/{noteId}\ngdzie noteId = id notatki"
 					},
 					"response": []
 				},
@@ -139,7 +139,7 @@
 								"03fa73f4-cdb5-479a-9a47-d146179b04bc"
 							]
 						},
-						"description": "PATCH pod adres http://localhost:8080/notes/{noteId}\ngdzie noteId = id notatki"
+						"description": "PATCH pod adres https://recruitmenttask.herokuapp.com/notes/{noteId}\ngdzie noteId = id notatki"
 					},
 					"response": []
 				},
@@ -170,7 +170,7 @@
 								"03fa73f4-cdb5-479a-9a47-d146179b04bc"
 							]
 						},
-						"description": "DELETE pod adres http://localhost:8080/notes/{noteId}\ngdzie noteId = id notatki"
+						"description": "DELETE pod adres https://recruitmenttask.herokuapp.com/notes/{noteId}\ngdzie noteId = id notatki"
 					},
 					"response": []
 				}
@@ -199,7 +199,7 @@
 								"03fa73f4-cdb5-479a-9a47-d146179b04bc"
 							]
 						},
-						"description": "GET pod adres http://localhost:8080/notes/history/{noteId}\ngdzie noteId = id notatki"
+						"description": "GET pod adres https://recruitmenttask.herokuapp.com/notes/history/{noteId}\ngdzie noteId = id notatki"
 					},
 					"response": []
 				}
