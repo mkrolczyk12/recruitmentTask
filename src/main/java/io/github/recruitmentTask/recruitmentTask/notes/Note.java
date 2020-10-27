@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.UUID;
 
 @Entity
 @JsonIgnoreProperties({"id", "version", "actualVersion", "deleted", "created", "modified"})
@@ -32,15 +33,15 @@ public class Note {
     /**
      * Hibernate use it
      */
-    public Note() {
+    Note() {
     }
 
-    public Note(String title, String content) {
+    private Note(String title, String content) {
         this.title = title;
         this.content = content;
     }
 
-    public Note(Note prevNote) {
+    Note(Note prevNote) {
         this.title = prevNote.getTitle();
         this.content = prevNote.getContent();
         this.noteId = prevNote.noteId;
@@ -53,27 +54,37 @@ public class Note {
     public Long getId() {return id;}
 
     public String getTitle() {return title;}
-    public void setTitle(final String title) {this.title = title;}
+    void setTitle(final String title) {this.title = title;}
 
     public String getContent() {return content;}
-    public void setContent(final String content) {this.content = content;}
+    void setContent(final String content) {this.content = content;}
 
     public String getNoteId() {return noteId;}
-    public void setNoteId(final String noteId) {this.noteId = noteId;}
+    private void setNoteId(final String noteId) {this.noteId = noteId;}
 
     public Integer getVersion() {return version;}
-    public void setVersion(final Integer version) {this.version = version;}
+    private void setVersion(final Integer version) {this.version = version;}
 
     public Boolean getActualVersion() {return actualVersion;}
-    public void setActualVersion(final Boolean actualVersion) {this.actualVersion = actualVersion;}
+    void setActualVersion(final Boolean actualVersion) {this.actualVersion = actualVersion;}
 
     public Boolean getDeleted() {return deleted;}
-    public void setDeleted(final Boolean deleted) {this.deleted = deleted;}
+    void setDeleted(final Boolean deleted) {this.deleted = deleted;}
 
     public LocalDateTime getCreated() {return created;}
-    public void setCreated(final LocalDateTime created) {this.created = created;}
+    private void setCreated(final LocalDateTime created) {this.created = created;}
 
     public LocalDateTime getModified() {return modified;}
-    public void setModified(final LocalDateTime modified) {this.modified = modified;}
+    void setModified(final LocalDateTime modified) {this.modified = modified;}
+
+    public static Note prepareNote(final String title, final String content) {
+        var note = new Note(title, content);
+        note.setNoteId(UUID.randomUUID().toString());
+        note.setDeleted(false);
+        note.setVersion(1);
+        note.setActualVersion(true);
+        note.setCreated(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+        return note;
+    }
 }
 

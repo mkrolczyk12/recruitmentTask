@@ -27,18 +27,9 @@ public class NoteReadModel {
     }
 
     public Long getId() {return id;}
-
     public String getTitle() {return title;}
-    public void setTitle(final String title) {this.title = title;}
-
     public String getContent() {return content;}
-    public void setContent(final String content) {this.content = content;}
-
     public String getNoteId() {return noteId;}
-
     public LocalDateTime getCreated() {return created;}
-    public void setCreated(final LocalDateTime created) {this.created = created;}
-
     public LocalDateTime getModified() {return modified;}
-    public void setModified(final LocalDateTime modified) {this.modified = modified;}
 }
