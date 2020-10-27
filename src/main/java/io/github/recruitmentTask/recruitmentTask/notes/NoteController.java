@@ -60,7 +60,7 @@ public class NoteController {
     @Transactional
     @PutMapping(path = "/{noteId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> fullNoteUpdate(@PathVariable final String noteId,
-                                        @RequestBody @Valid final NoteWriteModel note) throws NotFoundException {
+                                                 @RequestBody @Valid final NoteWriteModel note) throws NotFoundException {
         if(!service.checkIfGivenNoteExist(noteId)) {
             final String message = "Note with given id does not exist!";
             ExceptionResponse resp = new ExceptionResponse(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), message, "-");
@@ -73,7 +73,7 @@ public class NoteController {
     @Transactional
     @PatchMapping(path = "/{noteId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> partNoteUpdate(@PathVariable final String noteId,
-                                        @Valid final HttpServletRequest request) throws IOException, NotFoundException {
+                                                 @Valid final HttpServletRequest request) throws IOException, NotFoundException {
         if(!service.checkIfGivenNoteExist(noteId)) {
             final String message = "Note with given id does not exist!";
             ExceptionResponse resp = new ExceptionResponse(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), message, "-");

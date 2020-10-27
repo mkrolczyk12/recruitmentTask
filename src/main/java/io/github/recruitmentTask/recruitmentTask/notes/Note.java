@@ -65,8 +65,7 @@ public class Note {
     public void setVersion(final Integer version) {this.version = version;}
 
     public Boolean getActualVersion() {return actualVersion;}
-    public void setActualVersion(final Boolean actualVersion) {
-        this.actualVersion = actualVersion;}
+    public void setActualVersion(final Boolean actualVersion) {this.actualVersion = actualVersion;}
 
     public Boolean getDeleted() {return deleted;}
     public void setDeleted(final Boolean deleted) {this.deleted = deleted;}
