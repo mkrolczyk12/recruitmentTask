@@ -1,5 +1,6 @@
 # Recruitment task
-Backend Developer Assignment
+Backend Developer Assignment <br />
+Implement RESTful API webservice that will be responsible for managing and storing in database notes (without the UI part). (CRUD).
 
 ## Table of contents
 - [Technologies and dependencies](#technologies-and-dependencies)
