@@ -1,8 +1,7 @@
-package io.github.recruitmentTask.recruitmentTask.notes;
+package io.github.restfulApiWebservice.restfulApiWebservice.notes;
 
-import io.github.recruitmentTask.recruitmentTask.common.ExceptionResponse;
-import io.github.recruitmentTask.recruitmentTask.common.GeneralExceptionsProcessing;
-import io.github.recruitmentTask.recruitmentTask.notes.projection.NoteHistoryReadModel;
+import io.github.restfulApiWebservice.restfulApiWebservice.common.ExceptionResponse;
+import io.github.restfulApiWebservice.restfulApiWebservice.common.GeneralExceptionsProcessing;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -20,16 +19,16 @@ import java.util.List;
 @RestController
 @GeneralExceptionsProcessing
 @RequestMapping("/notes/history")
-public class NoteHistoryController {
+class NoteHistoryController {
     private static final Logger logger = LoggerFactory.getLogger(NoteHistoryController.class);
     private final NoteService service;
 
-    public NoteHistoryController(final NoteService service) {
+    NoteHistoryController(final NoteService service) {
         this.service = service;
     }
 
     @GetMapping(path = "/{noteId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<NoteHistoryReadModel>> readNoteHistory(@PathVariable final String noteId) {
+    ResponseEntity<List<NoteHistoryReadModel>> readNoteHistory(@PathVariable final String noteId) {
             if(!service.checkIfGivenNoteExist(noteId)) {
                 final String message = "Note with given id does not exist!";
                 ExceptionResponse resp = new ExceptionResponse(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), message, "-");

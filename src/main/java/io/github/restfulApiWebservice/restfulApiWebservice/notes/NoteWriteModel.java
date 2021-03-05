@@ -1,6 +1,4 @@
-package io.github.recruitmentTask.recruitmentTask.notes.projection;
-
-import io.github.recruitmentTask.recruitmentTask.notes.Note;
+package io.github.restfulApiWebservice.restfulApiWebservice.notes;
 
 import javax.validation.constraints.NotBlank;
 
@@ -17,6 +15,6 @@ public class NoteWriteModel {
     public void setContent(final String content) {this.content = content;}
 
     public Note toNote() {
-        return Note.prepareNote(title, content);
+        return new Note.NoteBuilder().build(title, content);
     }
 }

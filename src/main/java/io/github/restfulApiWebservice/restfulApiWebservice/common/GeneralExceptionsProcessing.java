@@ -1,4 +1,4 @@
-package io.github.recruitmentTask.recruitmentTask.common;
+package io.github.restfulApiWebservice.restfulApiWebservice.common;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

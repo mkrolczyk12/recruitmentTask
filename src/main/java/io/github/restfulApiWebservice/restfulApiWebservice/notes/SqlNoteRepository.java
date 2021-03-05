@@ -1,4 +1,4 @@
-package io.github.recruitmentTask.recruitmentTask.notes;
+package io.github.restfulApiWebservice.restfulApiWebservice.notes;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

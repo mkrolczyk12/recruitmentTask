@@ -1,9 +1,5 @@
-package io.github.recruitmentTask.recruitmentTask.notes.projection;
+package io.github.restfulApiWebservice.restfulApiWebservice.notes;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.github.recruitmentTask.recruitmentTask.notes.Note;
-
-@JsonIgnoreProperties({"noteId"})
 public class NoteHistoryReadModel extends NoteReadModel {
     private Integer version;
 

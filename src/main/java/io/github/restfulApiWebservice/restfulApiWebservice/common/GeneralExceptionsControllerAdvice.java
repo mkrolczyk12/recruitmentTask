@@ -1,4 +1,4 @@
-package io.github.recruitmentTask.recruitmentTask.common;
+package io.github.restfulApiWebservice.restfulApiWebservice.common;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import javassist.NotFoundException;

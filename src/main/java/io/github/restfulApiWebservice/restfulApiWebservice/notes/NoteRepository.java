@@ -1,9 +1,9 @@
-package io.github.recruitmentTask.recruitmentTask.notes;
+package io.github.restfulApiWebservice.restfulApiWebservice.notes;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface NoteRepository {
+interface NoteRepository {
     Note save(final Note toNote);
     Note saveAndFlush(final Note toUpdate);
 

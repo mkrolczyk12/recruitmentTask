@@ -1,9 +1,6 @@
-package io.github.recruitmentTask.recruitmentTask.notes;
+package io.github.restfulApiWebservice.restfulApiWebservice.notes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.recruitmentTask.recruitmentTask.notes.projection.NoteHistoryReadModel;
-import io.github.recruitmentTask.recruitmentTask.notes.projection.NoteReadModel;
-import io.github.recruitmentTask.recruitmentTask.notes.projection.NoteWriteModel;
 import javassist.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,12 +14,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class NoteService {
+class NoteService {
     private static final Logger logger = LoggerFactory.getLogger(NoteService.class);
     private final NoteRepository repository;
     private final ObjectMapper objectMapper;
 
-    public NoteService(final NoteRepository repository, ObjectMapper objectMapper) {
+    NoteService(final NoteRepository repository, ObjectMapper objectMapper) {
         this.repository = repository;
         this.objectMapper = objectMapper;
     }
@@ -58,7 +55,7 @@ public class NoteService {
                 .orElseThrow(() -> new NotFoundException("note with id = " + noteId + " does not exist!"));
         prevVersionOfNote.setModified(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         prevVersionOfNote.setActualVersion(false);
-        Note prevNotePartCopy = new Note(prevVersionOfNote);
+        Note prevNotePartCopy = new Note.NoteBuilder().build(prevVersionOfNote);
         var result = updateNoteByPutTypeOfRequest(data, prevNotePartCopy);
 
         repository.save(result);
@@ -75,7 +72,7 @@ public class NoteService {
         Note previousNoteVersion = repository
                 .findByNoteIdAndActualVersion(noteId, true)
                 .orElseThrow(() -> new NotFoundException("note with id = " + noteId + " does not exist!"));
-        Note updatedVersionOfNote = objectMapper.readerForUpdating(new Note(previousNoteVersion)).readValue(request.getReader());
+        Note updatedVersionOfNote = objectMapper.readerForUpdating(new Note.NoteBuilder().build(previousNoteVersion)).readValue(request.getReader());
         previousNoteVersion.setActualVersion(false);
         previousNoteVersion.setModified(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 

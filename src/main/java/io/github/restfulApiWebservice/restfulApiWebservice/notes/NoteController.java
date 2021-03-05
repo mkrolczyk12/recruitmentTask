@@ -1,9 +1,7 @@
-package io.github.recruitmentTask.recruitmentTask.notes;
+package io.github.restfulApiWebservice.restfulApiWebservice.notes;
 
-import io.github.recruitmentTask.recruitmentTask.common.ExceptionResponse;
-import io.github.recruitmentTask.recruitmentTask.common.GeneralExceptionsProcessing;
-import io.github.recruitmentTask.recruitmentTask.notes.projection.NoteReadModel;
-import io.github.recruitmentTask.recruitmentTask.notes.projection.NoteWriteModel;
+import io.github.restfulApiWebservice.restfulApiWebservice.common.ExceptionResponse;
+import io.github.restfulApiWebservice.restfulApiWebservice.common.GeneralExceptionsProcessing;
 import javassist.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,29 +23,29 @@ import java.util.List;
 @RestController
 @GeneralExceptionsProcessing
 @RequestMapping("/notes")
-public class NoteController {
+class NoteController {
     private static final Logger logger = LoggerFactory.getLogger(NoteController.class);
     private final NoteService service;
 
-    public NoteController(final NoteService service) {
+    NoteController(final NoteService service) {
         this.service = service;
     }
 
     @Transactional
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<NoteReadModel> addNote(@RequestBody @Valid final NoteWriteModel note) {
+    ResponseEntity<NoteReadModel> addNote(@RequestBody @Valid final NoteWriteModel note) {
             NoteReadModel result = service.addNote(note);
             logger.info("posted new note with id = " + result.getNoteId());
             return ResponseEntity.created(URI.create("/" + result.getNoteId())).body(result);
     }
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<NoteReadModel>> readAllNotes() {
+    ResponseEntity<List<NoteReadModel>> readAllNotes() {
         logger.info("reading all notes from database");
             List<NoteReadModel> notes = service.findAll();
             return ResponseEntity.ok(notes);
     }
     @GetMapping(path = "/{noteId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<NoteReadModel> readNote(@PathVariable final String noteId) throws NotFoundException {
+    ResponseEntity<NoteReadModel> readNote(@PathVariable final String noteId) throws NotFoundException {
             if(!service.checkIfGivenNoteExist(noteId)) {
                 final String message = "Note with given id does not exist!";
                 ExceptionResponse resp = new ExceptionResponse(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), message, "-");
@@ -59,7 +57,7 @@ public class NoteController {
     }
     @Transactional
     @PutMapping(path = "/{noteId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> fullNoteUpdate(@PathVariable final String noteId,
+    ResponseEntity<Object> fullNoteUpdate(@PathVariable final String noteId,
                                                  @RequestBody @Valid final NoteWriteModel note) throws NotFoundException {
         if(!service.checkIfGivenNoteExist(noteId)) {
             final String message = "Note with given id does not exist!";
@@ -72,7 +70,7 @@ public class NoteController {
     }
     @Transactional
     @PatchMapping(path = "/{noteId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> partNoteUpdate(@PathVariable final String noteId,
+    ResponseEntity<Object> partNoteUpdate(@PathVariable final String noteId,
                                                  @Valid final HttpServletRequest request) throws IOException, NotFoundException {
         if(!service.checkIfGivenNoteExist(noteId)) {
             final String message = "Note with given id does not exist!";
@@ -85,7 +83,7 @@ public class NoteController {
     }
     @Transactional
     @DeleteMapping(path = "/{noteId}")
-    public ResponseEntity<Object> deleteNote(@PathVariable final String noteId) {
+    ResponseEntity<Object> deleteNote(@PathVariable final String noteId) {
         if(!service.checkIfGivenNoteExist(noteId)) {
             final String message = "Note with given id does not exist!";
             ExceptionResponse resp = new ExceptionResponse(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), message, "-");

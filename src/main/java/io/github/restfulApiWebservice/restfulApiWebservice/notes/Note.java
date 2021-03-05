@@ -1,6 +1,7 @@
-package io.github.recruitmentTask.recruitmentTask.notes;
+package io.github.restfulApiWebservice.restfulApiWebservice.notes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -10,9 +11,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
 @Entity
-@JsonIgnoreProperties({"id", "version", "actualVersion", "deleted", "created", "modified"})
 @Table(name = "notes")
-public class Note {
+class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,18 +30,17 @@ public class Note {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime modified;
 
-    /**
-     * Hibernate use it
-     */
-    Note() {
+    @PersistenceConstructor
+    protected Note() {
     }
 
     private Note(String title, String content) {
         this.title = title;
         this.content = content;
+        prepareNote(this);
     }
 
-    Note(Note prevNote) {
+    private Note(Note prevNote) {
         this.title = prevNote.getTitle();
         this.content = prevNote.getContent();
         this.noteId = prevNote.noteId;
@@ -51,40 +50,76 @@ public class Note {
         this.created = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
     }
 
-    public Long getId() {return id;}
+    private Note(NoteBuilder builder) {
+        this.title = builder.title;
+        this.content = builder.content;
+        prepareNote(this);
+    }
 
-    public String getTitle() {return title;}
+    /*
+        Set the note's initial data
+     */
+    private void prepareNote(Note toPrepare) {
+        toPrepare.setNoteId(UUID.randomUUID().toString());
+        toPrepare.setDeleted(false);
+        toPrepare.setVersion(1);
+        toPrepare.setActualVersion(true);
+        toPrepare.setCreated(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+    }
+
+    Long getId() {return id;}
+
+    String getTitle() {return title;}
     void setTitle(final String title) {this.title = title;}
 
-    public String getContent() {return content;}
+    String getContent() {return content;}
     void setContent(final String content) {this.content = content;}
 
-    public String getNoteId() {return noteId;}
+    String getNoteId() {return noteId;}
     private void setNoteId(final String noteId) {this.noteId = noteId;}
 
-    public Integer getVersion() {return version;}
+    Integer getVersion() {return version;}
     private void setVersion(final Integer version) {this.version = version;}
 
-    public Boolean getActualVersion() {return actualVersion;}
+    Boolean getActualVersion() {return actualVersion;}
     void setActualVersion(final Boolean actualVersion) {this.actualVersion = actualVersion;}
 
-    public Boolean getDeleted() {return deleted;}
+    Boolean getDeleted() {return deleted;}
     void setDeleted(final Boolean deleted) {this.deleted = deleted;}
 
-    public LocalDateTime getCreated() {return created;}
+    LocalDateTime getCreated() {return created;}
     private void setCreated(final LocalDateTime created) {this.created = created;}
 
-    public LocalDateTime getModified() {return modified;}
+    LocalDateTime getModified() {return modified;}
     void setModified(final LocalDateTime modified) {this.modified = modified;}
 
-    public static Note prepareNote(final String title, final String content) {
-        var note = new Note(title, content);
-        note.setNoteId(UUID.randomUUID().toString());
-        note.setDeleted(false);
-        note.setVersion(1);
-        note.setActualVersion(true);
-        note.setCreated(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
-        return note;
+    static class NoteBuilder {
+        @NotBlank(message = "Note title can not be null or empty")
+        private String title;
+        @NotBlank(message = "Note content can not be null or empty")
+        private String content;
+
+        NoteBuilder setTitle(final String title) {
+            this.title = title;
+            return this;
+        }
+
+        NoteBuilder setDescription(final String content) {
+            this.content = content;
+            return this;
+        }
+
+        Note build() {
+            return new Note(this);
+        }
+
+        Note build(Note prevNote) {
+            return new Note(prevNote);
+        }
+
+        Note build(final String title, final String content) {
+            return new Note(title, content);
+        }
     }
 }
 

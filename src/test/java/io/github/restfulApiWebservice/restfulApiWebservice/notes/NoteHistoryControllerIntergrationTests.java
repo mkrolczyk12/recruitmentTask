@@ -1,8 +1,6 @@
-package io.github.recruitmentTask.recruitmentTask.notes;
+package io.github.restfulApiWebservice.restfulApiWebservice.notes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.recruitmentTask.recruitmentTask.notes.projection.NoteHistoryReadModel;
-import io.github.recruitmentTask.recruitmentTask.notes.projection.NoteWriteModel;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -39,7 +37,7 @@ class NoteHistoryControllerIntergrationTests {
         mockInMemoryRepository.save(note1);
         NoteHistoryReadModel noteVersion1 = new NoteHistoryReadModel(note1);
         // mock note version 2
-        Note note2 = new Note(note1);
+        Note note2 = new Note.NoteBuilder().build(note1);
         note2.setTitle("title version 2");
         mockInMemoryRepository.save(note2);
         NoteHistoryReadModel noteVersion2 = new NoteHistoryReadModel(note2);

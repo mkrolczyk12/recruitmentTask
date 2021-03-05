@@ -1,7 +1,6 @@
-package io.github.recruitmentTask.recruitmentTask.notes;
+package io.github.restfulApiWebservice.restfulApiWebservice.notes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.recruitmentTask.recruitmentTask.notes.projection.NoteWriteModel;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -163,11 +162,17 @@ class NoteControllerIntegrationTests {
         Note note1 = mockNote1.toNote();
         mockInMemoryRepository.save(note1);
         // mock version 2
-        Note note2 = new Note(note1);
-        note2.setTitle("title version 2");
+        NoteWriteModel mockNote2 = new NoteWriteModel();
+        mockNote2.setTitle("title2");
+        mockNote2.setContent("content2");
+        Note note2 = mockNote2.toNote();
+        mockInMemoryRepository.save(note2);
         // mock version 3
-        Note note3 = new Note(note1);
-        note3.setTitle("title version 2");
+        NoteWriteModel mockNote3 = new NoteWriteModel();
+        mockNote3.setTitle("title3");
+        mockNote3.setContent("content3");
+        Note note3 = mockNote3.toNote();
+        mockInMemoryRepository.save(note3);
 
         // when + then
         mockMvc

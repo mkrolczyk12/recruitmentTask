@@ -1,7 +1,7 @@
-package io.github.recruitmentTask.recruitmentTask;
+package io.github.restfulApiWebservice.restfulApiWebservice;
 
-import io.github.recruitmentTask.recruitmentTask.common.ExceptionResponse;
-import io.github.recruitmentTask.recruitmentTask.common.GeneralExceptionsProcessing;
+import io.github.restfulApiWebservice.restfulApiWebservice.common.ExceptionResponse;
+import io.github.restfulApiWebservice.restfulApiWebservice.common.GeneralExceptionsProcessing;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
